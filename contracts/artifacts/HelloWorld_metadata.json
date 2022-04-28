@@ -1,0 +1,105 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "number",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "retrieveNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "number_",
+						"type": "uint256"
+					}
+				],
+				"name": "storeNumber",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "hashedMae",
+			"details": "simple contract for storing and retrieving an unsigned integer",
+			"kind": "dev",
+			"methods": {
+				"retrieveNumber()": {
+					"details": "@returns variable number that was previously set"
+				},
+				"storeNumber(uint256)": {
+					"details": "stores an unsigned integer that can be retrieved",
+					"params": {
+						"number_": "unsigned integer that'll be stored in number"
+					}
+				}
+			},
+			"title": "HelloWorld",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"retrieveNumber()": {
+					"notice": "retrieves the stored number"
+				},
+				"storeNumber(uint256)": {
+					"notice": "stores an number"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/4_HelloWorld.sol": "HelloWorld"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/4_HelloWorld.sol": {
+			"keccak256": "0xf75586ef085d334226bb12c95c430aafa9f15f7a3c27f3dd18ab74dca87207ad",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://c664b83cca3933d93ec2f8196a9ad70569f0de7cd45e983525e8a8a18d3b6493",
+				"dweb:/ipfs/QmNiBc519ftc9U7C9FGWZ7MwbCdT41gvoD7f7SoEZ75NDr"
+			]
+		}
+	},
+	"version": 1
+}

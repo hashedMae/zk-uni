@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
+pragma experimental ABIEncoderV2;
 
 /** 
  * @title Ballot
@@ -24,6 +25,8 @@ contract Ballot {
 
     address public chairperson;
 
+    uint256 public startTime;
+
     mapping(address => Voter) public voters;
 
     Proposal[] public proposals;
@@ -35,6 +38,7 @@ contract Ballot {
     constructor(bytes32[] memory proposalNames) {
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
+        startTime = block.timestamp;
 
         for (uint i = 0; i < proposalNames.length; i++) {
             // 'Proposal({...})' creates a temporary
@@ -45,6 +49,13 @@ contract Ballot {
                 voteCount: 0
             }));
         }
+    }
+
+    ///@dev modifier that only allows voting for 5 minutes from launch
+    modifier voteEnded() {
+        require(block.timestamp < (startTime + 5 minutes));
+        _;
+
     }
     
     /** 
@@ -97,7 +108,7 @@ contract Ballot {
      * @dev Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'.
      * @param proposal index of proposal in the proposals array
      */
-    function vote(uint proposal) public {
+    function vote(uint proposal) public voteEnded {
         Voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "Has no right to vote");
         require(!sender.voted, "Already voted.");
