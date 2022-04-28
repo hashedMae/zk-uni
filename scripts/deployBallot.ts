@@ -1,16 +1,18 @@
+import { deploy } from './web3.ts'
+
 (async () => {
   try {
     console.log('deploy...')
 
     // Note that the script needs the ABI which is generated from the compilation artifact.
-    const metadata = JSON.parse(await remix.call('fileManager', 'getFile', 'browser/artifacts/CustomERC20.json'))
-    const accounts = await web3.eth.getAccounts()
+    const metadata = JSON.parse(await remix.call('fileManager', 'getFile', 'contracts/artifacts/Ballot.json'))
+    const propoposalNames:bytes32 = [0x61746173746174617461746172746174000000000000000000000000000000]
 
     let contract = new web3.eth.Contract(metadata.abi)
 
     contract = contract.deploy({
       data: metadata.data.bytecode.object,
-      arguments: ["Mask", "N95"]
+      arguments: [propoposalNames]
     })
 
     newContractInstance = await contract.send({
